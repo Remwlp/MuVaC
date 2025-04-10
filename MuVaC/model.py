@@ -833,7 +833,7 @@ class MLP(nn.Module):
     def __init__(self, input_dim=1024, output_dim=768):
         super(MLP, self).__init__()
         self.mlp = nn.Sequential(
-            nn.Linear(input_dim, 512),  # 中间层可调整
+            nn.Linear(input_dim, 512), 
             nn.ReLU(),
             nn.Linear(512, output_dim)
         )
