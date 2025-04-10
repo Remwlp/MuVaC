@@ -21,7 +21,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 tokenizer = BartTokenizerFast.from_pretrained('bart-base')
 tokenizer.add_tokens(['[CONTEXT]', '[TARGET]'], special_tokens=True)
 
-# 加载配置
 def load_config(config_path):
     with open(config_path, 'r') as file:
         config = json.load(file)
@@ -57,7 +56,6 @@ def prepare_for_training(model,
 
 
 
-# 训练和评估函数，现在接收完整的config对象
 def train_and_evaluate(config):
     num_epochs = config['num_epochs']
     base_learning_rate = config['BASE_LEARNING_RATE']
@@ -227,7 +225,6 @@ def train_and_evaluate(config):
                                          precision=precision.compute().item(), 
                                          recall=recall.compute().item(), f1=f1_score.compute().item())
     return 
-# 主逻辑
 if __name__ == "__main__":
     config = load_config('config.json')
     train_and_evaluate(config)
